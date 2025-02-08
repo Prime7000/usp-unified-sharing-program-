@@ -77,20 +77,21 @@
     </style>
 
     <div class="form-container">
-        <form id="mediaForm">
-            <!-- Timestamp Input -->
+        <form id="mediaForm" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- title Input -->
             <div class="form-group">
-                <label for="timestamp">Title:</label>
-                <input type="text" id="title" name="title" required>
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" >
             </div>
 
             <!-- Description Textarea -->
             <div class="form-group">
                 <label for="description">Description:</label>
-                <textarea id="description" name="description" required></textarea>
+                <textarea id="description" name="description" ></textarea>
             </div>
 
-            <!-- Media Type Dropdown -->
+            <!-- Media Type Dropdown
             <div class="form-group">
                 <label for="mediaType">Media Type:</label>
                 <select id="mediaType" name="mediaType" required>
@@ -99,13 +100,19 @@
                     <option value="video">Video</option>
                     <option value="audio">Audio</option>
                 </select>
-            </div>
+            </div> -->
 
             <!-- File Input -->
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="mediaFile">Media File:</label>
                 <input type="file" id="mediaFile" name="mediaFile" accept="*/*" required>
+            </div> -->
+
+            <div class="form-group">
+                <label for="mediaFile">Media files</label>
+                {{files.file}}
             </div>
+
 
             <!-- Submit Button -->
             <button type="submit" class="submit-btn">Upload Media</button>

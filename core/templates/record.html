@@ -25,6 +25,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        gap: 1rem;
     }
 
     /* Card Styles */
@@ -75,10 +76,14 @@
 </style>
 
 <div class="card-container">
+    {% for record in data %}
     <div class="card">
-        <img src="https://via.placeholder.com/150" alt="Profile Image" class="card-img">
-        <h2>John Doe</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ut turpis ac eros fermentum ultrices.</p>
+        <img src="{{record.data.all.0.file.url}}" alt="{{record.title}}" class="card-img">
+        <h2>{{record.title}}</h2>
+        <p>{{record.description}}</p>
+        <p>{{record.categorizer}}</p>
+        <p>{{record.file_type}}</p>
     </div>
+    {% endfor %}
 </div>
 {% endblock %}
