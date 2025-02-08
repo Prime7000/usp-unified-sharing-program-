@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}Records{% endblock %}
+
+{% block content %}
+<br><br>
+<style>
+    /* Global Reset and Base Styles */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background-color: #f5f5f5;
+        padding: 20px;
+    }
+
+    /* Card Container */
+    .card-container {
+        max-width: 800px;
+        margin: 2rem auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Card Styles */
+    .card {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    /* Circular Image */
+    .card-img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50px;
+        margin-bottom: 1.5rem;
+        border: 3px solid #4CAF50;
+    }
+
+    /* Card Text */
+    .card h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #333;
+    }
+
+    .card p {
+        font-size: 1rem;
+        color: #666;
+        line-height: 1.5;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .card-container {
+            padding: 1rem;
+            margin: 1rem;
+        }
+
+        .card {
+            padding: 1.5rem;
+        }
+    }
+</style>
+
+<div class="card-container">
+    <div class="card">
+        <img src="https://via.placeholder.com/150" alt="Profile Image" class="card-img">
+        <h2>John Doe</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ut turpis ac eros fermentum ultrices.</p>
+    </div>
+</div>
+{% endblock %}

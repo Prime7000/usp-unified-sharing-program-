@@ -1,11 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Jesus is Lord</h1>
-</body>
-</html>
+
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+<style>
+    a{
+        text-decoration: none;
+        color: black;
+    }
+</style>
+
+    <div class="main-content">
+        <div class="media-grid">
+
+            <a href="{% url 'core:image_upload' %}">
+                <div class="media-box">
+                    <i class="fas fa-image media-icon" style="color: #e74c3c;"></i>
+                    <h3>Images</h3>
+                    <p>Share your favorite moments in high quality images</p>
+                </div>
+            </a>
+
+            <div class="media-box">
+                <i class="fas fa-video media-icon" style="color: #3498db;"></i>
+                <h3>Videos</h3>
+                <p>Upload and stream videos in various formats</p>
+            </div>
+
+            <div class="media-box">
+                <i class="fas fa-music media-icon" style="color: #2ecc71;"></i>
+                <h3>Audio</h3>
+                <p>Share your music and audio recordings</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 MediaShare. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+
+{% endblock %}
