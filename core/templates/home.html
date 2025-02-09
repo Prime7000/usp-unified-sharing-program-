@@ -4,7 +4,6 @@
 {% block title %} Home {% endblock %}
 
 {% block content %}
-<br><br>
 
 <style>
     a{
@@ -24,17 +23,21 @@
                 </div>
             </a>
 
-            <div class="media-box">
-                <i class="fas fa-video media-icon" style="color: #3498db;"></i>
-                <h3>Videos</h3>
-                <p>Upload and stream videos in various formats</p>
-            </div>
+            <a href="{% url 'core:video_upload' %}">
+                <div class="media-box">
+                    <i class="fas fa-video media-icon" style="color: #3498db;"></i>
+                    <h3>Videos</h3>
+                    <p>Upload and stream videos in various formats</p>
+                </div>
+            </a>
 
-            <div class="media-box">
-                <i class="fas fa-music media-icon" style="color: #2ecc71;"></i>
-                <h3>Audio</h3>
-                <p>Share your music and audio recordings</p>
-            </div>
+            <a href="{% url 'core:audio_upload' %}">
+                <div class="media-box">
+                    <i class="fas fa-music media-icon" style="color: #2ecc71;"></i>
+                    <h3>Audio</h3>
+                    <p>Share your music and audio recordings</p>
+                </div>
+            </a>
         </div>
     </div>
 
