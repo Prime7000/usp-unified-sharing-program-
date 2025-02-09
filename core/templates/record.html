@@ -23,8 +23,8 @@
         max-width: 800px;
         margin: 2rem auto;
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
-        align-items: center;
         gap: 1rem;
     }
 
@@ -37,16 +37,32 @@
         text-align: center;
         width: 100%;
         max-width: 400px;
+        transition: transform 0.2s ease-in-out;
+    }
+    
+    .card:hover {
+        transform: scale(1.02);
     }
 
-    /* Circular Image */
-    .card-img {
+    /* Image Media Styles (Circular with border) */
+    .card-media {
         width: 150px;
         height: 150px;
         object-fit: cover;
-        border-radius: 50px;
+        border-radius: 50%;
         margin-bottom: 1.5rem;
         border: 3px solid #4CAF50;
+    }
+    
+    /* Icon Media Styles (Same size but no border or circular shape) */
+    .card-icon {
+        width: 150px;
+        height: 150px;
+        font-size: 150px;
+        line-height: 150px;
+        margin-bottom: 1.5rem;
+        display: inline-block;
+        /* No border or border-radius */
     }
 
     /* Card Text */
@@ -77,13 +93,25 @@
 
 <div class="card-container">
     {% for record in data %}
-    <div class="card">
-        <img src="{{record.data.all.0.file.url}}" alt="{{record.title}}" class="card-img">
-        <h2>{{record.title}}</h2>
-        <p>{{record.description}}</p>
-        <p>{{record.categorizer}}</p>
-        <p>{{record.file_type}}</p>
-    </div>
+    <a href="{% url 'core:individual_record' record.id %}">
+        <div class="card">
+            {% if record.file_type == 'image' %}
+                {% if record.image %}
+                    <img class="card-media" src="{{ record.image.url }}" alt="{{ record.title }}">
+                {% else %}
+                    <i class="fas fa-image card-icon" style="color: #e74c3c;"></i>
+                {% endif %}
+            {% elif record.file_type == 'video' %}
+                <i class="fas fa-video card-icon" style="color: #3498db;"></i>
+            {% elif record.file_type == 'audio' %}
+                <i class="fas fa-music card-icon" style="color: #2ecc71;"></i>
+            {% endif %}
+            <h2>{{ record.title }}</h2>
+            <p>{{ record.description }}</p>
+            <p>{{ record.categorizer }}</p>
+            <p>{{ record.file_type }}</p>
+        </div>
+    </a>
     {% endfor %}
 </div>
 {% endblock %}

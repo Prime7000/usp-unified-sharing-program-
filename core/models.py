@@ -8,6 +8,7 @@ class label(models.Model):
     time = models.DateTimeField(auto_now_add=True)
     categorizer = models.CharField(max_length=100, null=True, blank=True)
     file_type = models.CharField(max_length=100, null=True, blank=True)
+    image = models.FileField(upload_to='thumbnail/', null=True, blank=True)
 
     def __str__(self):
         return self.categorizer
