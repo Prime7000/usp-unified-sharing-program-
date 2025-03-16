@@ -117,7 +117,7 @@ def audio_upload(request):
 
 
 def records(request):
-    data = label.objects.all()
+    data = label.objects.all().order_by('-id')
 
     return render(request, 'record.html', {'data':data})
 
@@ -125,7 +125,7 @@ def individual_record(request, id):
     labelx = label.objects.get(id=id)
     datax = data.objects.filter(label=labelx)
 
-    return render(request, 'individual_record.html', {'labels':datax,'label':labelx})
+    return render(request, 'individual_record.html', {'labels':datax,'labelx':labelx})
 
 import os
 
